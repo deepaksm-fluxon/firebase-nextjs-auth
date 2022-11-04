@@ -13,13 +13,13 @@ copy/paste.
 
 */
 const CLIENT_CONFIG = {
-  apiKey: "AIzaSyAoonOmu_H1Bksv7378GKcKdrExuj-On14",
-  authDomain: "fir-nextjs-ssr.firebaseapp.com",
+  apiKey: "AIzaSyBiRfiOLsb_ULnEqKubMMDpqSPZ7w-Cm6s",
+  authDomain: "rahul-fluxon-testing.firebaseapp.com",
   databaseURL: "https://fir-nextjs-ssr.firebaseio.com",
-  projectId: "fir-nextjs-ssr",
-  storageBucket: "fir-nextjs-ssr.appspot.com",
-  messagingSenderId: "364051821923",
-  appId: "1:364051821923:web:658516ef4516511223cf56",
+  projectId: "rahul-fluxon-testing",
+  storageBucket: "rahul-fluxon-testing.appspot.com",
+  messagingSenderId: "92812809015",
+  appId: "1:92812809015:web:3484b928859b93caf340b2"
 };
 
 if (typeof window !== "undefined" && !firebaseClient.apps.length) {

@@ -10,8 +10,14 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
     const cookies = nookies.get(ctx);
     console.log(JSON.stringify(cookies, null, 2));
-    const token = await firebaseAdmin.auth().verifyIdToken(cookies.token);
-    const { uid, email } = token;
+    let uid, email;
+    if(cookies?.token) {
+      const token = await firebaseAdmin.auth().verifyIdToken(cookies.token);
+      ({ uid, email } = token);
+    } else {
+      ({uid, email} = await firebaseAdmin.auth().createUser({}));
+    }
+    
 
     // the user is authenticated!
     // FETCH STUFF HERE
