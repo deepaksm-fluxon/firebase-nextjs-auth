@@ -12,11 +12,7 @@ if (!privateKey || !clientEmail || !projectId) {
 
 if (!firebaseAdmin.apps.length) {
   firebaseAdmin.initializeApp({
-    credential: firebaseAdmin.credential.cert({
-      privateKey: privateKey,
-      clientEmail,
-      projectId: "rahul-fluxon-testing",
-    }),
+    credential: firebaseAdmin.credential.cert("./service-accounts/rahul-fluxon-testing-firebase-adminsdk-y6oen-03a3b9a937.json"),
     databaseURL: `https://${projectId}.firebaseio.com`,
   });
 }
