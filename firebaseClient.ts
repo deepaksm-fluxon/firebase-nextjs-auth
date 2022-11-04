@@ -1,6 +1,6 @@
 import { getApp, getApps, initializeApp, } from "firebase/app";
 import "firebase/auth";
-import { getAuth, initializeAuth, setPersistence } from "firebase/auth";
+import { browserLocalPersistence, indexedDBLocalPersistence, initializeAuth, inMemoryPersistence } from "firebase/auth";
 
 /*
 
@@ -26,8 +26,12 @@ const CLIENT_CONFIG = {
 const initializeClientFirebase = () => {
   if (typeof window !== "undefined" && !getApps().length) {
     initializeApp(CLIENT_CONFIG);
-    initializeAuth(getApp(), { persistence: { type: 'SESSION' } })
-    // setPersistence(getAuth(), { type: 'SESSION' });
+    initializeAuth(getApp(), {
+      persistence:
+        typeof window === 'undefined'
+          ? inMemoryPersistence
+          : [indexedDBLocalPersistence, browserLocalPersistence],
+    })
   }
 }
 
