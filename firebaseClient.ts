@@ -1,6 +1,6 @@
-import { getApps, initializeApp } from "firebase/app";
+import { getApp, getApps, initializeApp, } from "firebase/app";
 import "firebase/auth";
-import { getAuth, setPersistence } from "firebase/auth";
+import { getAuth, initializeAuth, setPersistence } from "firebase/auth";
 
 /*
 
@@ -26,7 +26,8 @@ const CLIENT_CONFIG = {
 const initializeClientFirebase = () => {
   if (typeof window !== "undefined" && !getApps().length) {
     initializeApp(CLIENT_CONFIG);
-    setPersistence(getAuth(), { type: 'SESSION' });
+    initializeAuth(getApp(), { persistence: { type: 'SESSION' } })
+    // setPersistence(getAuth(), { type: 'SESSION' });
   }
 }
 
