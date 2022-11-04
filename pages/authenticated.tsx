@@ -1,10 +1,9 @@
-import React from "react";
+import { useRouter } from 'next/router';
 import nookies from "nookies";
-import { useRouter } from 'next/router'
 import { firebaseAdmin } from "../firebaseAdmin";
-import { firebaseClient } from "../firebaseClient";
 
-import { InferGetServerSidePropsType, GetServerSidePropsContext } from "next";
+import { getAuth } from "firebase/auth";
+import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
@@ -54,8 +53,7 @@ function AuthenticatedPage(
       <p>{props.message!}</p>
       <button
         onClick={async () => {
-          await firebaseClient
-            .auth()
+          await getAuth()
             .signOut()
             .then(() => {
               router.push("/");

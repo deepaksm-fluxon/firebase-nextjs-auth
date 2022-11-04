@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import Link from 'next/link';
-import { firebaseClient } from '../firebaseClient';
+import { useState } from 'react';
 
 export default (_props: any) => {
   const [email, setEmail] = useState('');
@@ -24,9 +24,7 @@ export default (_props: any) => {
       />
       <button
         onClick={async () => {
-          await firebaseClient
-            .auth()
-            .createUserWithEmailAndPassword(email, pass);
+          await createUserWithEmailAndPassword(getAuth(), email, pass);
           window.location.href = '/';
         }}
       >
@@ -34,7 +32,7 @@ export default (_props: any) => {
       </button>
       <button
         onClick={async () => {
-          await firebaseClient.auth().signInWithEmailAndPassword(email, pass);
+          await signInWithEmailAndPassword(getAuth(), email, pass);
           window.location.href = '/';
         }}
       >
