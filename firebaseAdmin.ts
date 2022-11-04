@@ -15,7 +15,7 @@ if (!firebaseAdmin.apps.length) {
     credential: firebaseAdmin.credential.cert({
       privateKey: privateKey,
       clientEmail,
-      projectId,
+      projectId: "rahul-fluxon-testing",
     }),
     databaseURL: `https://${projectId}.firebaseio.com`,
   });
